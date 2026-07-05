@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Products — Industrial Petroleum Catalog | SAI International</title>
+<meta name="description" content="Bio-Diesel, LDO, Bitumen, Furnace Oil, LSHS, Industrial Fuel Oil and Bakery Oil — full technical catalog with applications and specifications." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <body>
+
+<div id="video-bg">
+  <video autoplay loop muted playsinline>
+    <source src="saiinternationalbackground.mp4" type="video/mp4">
+  </video>
+</div>
+
+<div class="content-wrapper">
+
+<nav class="header">
+  <a href="index.html" class="logo"><div class="logo-mark"></div><span class="logo-text">SAI International</span></a>
+  <div class="nav-links">
+    <a href="products.html">Products</a>
+    <a href="about.html">About</a>
+    <a href="csr.html">CSR</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <a href="contact.html" class="cta-btn">Request Quote</a>
+</nav>
+
+<section class="page-banner">
+  <span class="eyebrow">[ 03 ] Catalog</span>
+  <h1 class="banner">The Complete <span class="text-primary">Portfolio.</span></h1>
+  <p class="lead">Seven core distillates and compounds refined to exacting industrial standards. Each product is supported by technical documentation, MSDS and bulk-supply logistics.</p>
+</section>
+
+<section id="catalog"></section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div>
+      <div class="footer-mark"></div>
+      <p class="footer-addr">SAI international  PVT. LTD.<b><br />Rani Bagh, Pitampura<br /> New Delhi 110034</p>
+      <p class="footer-copy">&copy; <span id="yr"></span> SAI International. All Rights Reserved.</p>
+    </div>
+    <div class="footer-mega">SAI</div>
+  </div>
+</footer>
+
+<script>document.getElementById('yr').textContent=new Date().getFullYear();</script>
+<script src="js/products-data.js"></script>
+<script>
+  const root = document.getElementById('catalog');
+  root.innerHTML = PRODUCTS.map(p => `
+    <article class="product-row">
+      <div>
+        <span class="ref">Ref</span>
+        <span class="ref-num">${p.index}</span>
+      </div>
+      <div>
+        <h2>${p.name}</h2>
+        <p class="desc">${p.description}</p>
+      </div>
+      <div>
+        <span class="ref">Applications</span>
+        <ul class="applications" style="margin-top:16px">
+          ${p.applications.map(a => `<li><span class="arrow">→</span><span>${a}</span></li>`).join('')}
+        </ul>
+        <a href="contact.html" class="quote-link">Request Quote →</a>
+      </div>
+    </article>
+  `).join('');
+</script>
+<script src="js/main.js"></script>
+</div>
+</body>
+</html>
