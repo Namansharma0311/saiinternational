@@ -66,16 +66,29 @@ if (track) {
 const loader = document.getElementById("loader");
 const video = document.getElementById("loaderVideo");
 
+document.body.classList.add("loading");
+
 window.addEventListener("load", () => {
 
-    // If video already finished
-    if(video.ended){
-        loader.classList.add("hide");
+    // If the video has already ended
+    if (video.ended) {
+        finishLoading();
     }
 
-    // Otherwise wait until it ends
-    video.addEventListener("ended", () => {
-        loader.classList.add("hide");
-    });
+    // Otherwise wait for it to finish
+    video.addEventListener("ended", finishLoading);
 
 });
+
+function finishLoading(){
+
+    loader.classList.add("hide");
+
+    document.body.classList.remove("loading");
+
+    setTimeout(()=>{
+        loader.remove();
+    },800);
+
+}
+
