@@ -128,12 +128,12 @@ if (form) {
           
         })
         .then(() => {
-            alert("Inquiry sent successfully!");
+            alert("✅ Email sent successfully!");
             form.reset();
             grecaptcha.reset();
         })
         .catch((err) => {
-            console.error("EmailJS Error:", err);
+            console.error("❌ Failed to send email", err);
             alert(JSON.stringify(err));
         });
     });
