@@ -97,3 +97,33 @@ if (loader && video) {
     });
 
 }
+
+
+emailjs.init({
+    publicKey: "fymXGA5Oa_267lIbQ"
+});
+
+const form = document.getElementById("quote-form");
+
+if (form) {
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        emailjs.send("service_skskdzd", "template_xuonzij", {
+            name: document.getElementById("name").value,
+            company: document.getElementById("company").value,
+            email: document.getElementById("email").value,
+            phone: document.getElementById("phone").value,
+            product: document.getElementById("product").value,
+            message: document.getElementById("message").value
+        })
+        .then(() => {
+            alert("Inquiry sent successfully!");
+            form.reset();
+        })
+        .catch((err) => {
+            console.error(err);
+            alert("Failed to send inquiry.");
+        });
+    });
+}
