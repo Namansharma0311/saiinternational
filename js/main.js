@@ -117,12 +117,15 @@ if (form) {
         }
 
         emailjs.send("service_skskdzd", "template_xuonzij", {
-            name: document.getElementById("name").value,
-            company: document.getElementById("company").value,
-            email: document.getElementById("email").value,
-            phone: document.getElementById("phone").value,
-            product: document.getElementById("product").value,
-            message: document.getElementById("message").value
+    name: document.getElementById("name").value,
+    company: document.getElementById("company").value,
+    email: document.getElementById("email").value,
+    phone: document.getElementById("phone").value,
+    product: document.getElementById("product").value,
+    message: document.getElementById("message").value,
+
+    "g-recaptcha-response": captchaResponse
+          
         })
         .then(() => {
             alert("Inquiry sent successfully!");
