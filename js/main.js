@@ -66,29 +66,34 @@ if (track) {
 const loader = document.getElementById("loader");
 const video = document.getElementById("loaderVideo");
 
-document.body.classList.add("loading");
+// Only run if the loader exists
+if (loader && video) {
 
-window.addEventListener("load", () => {
+    document.body.classList.add("loading");
 
-    // If the video has already ended
-    if (video.ended) {
-        finishLoading();
+    function finishLoading() {
+
+        loader.classList.add("hide");
+
+        document.body.classList.remove("loading");
+
+        setTimeout(() => {
+            loader.remove();
+        }, 800);
     }
 
-    // Otherwise wait for it to finish
-    video.addEventListener("ended", finishLoading);
+    window.addEventListener("load", () => {
 
-});
+        if (video.ended) {
+            finishLoading();
+        } else {
+            video.addEventListener("ended", finishLoading, { once: true });
 
-function finishLoading(){
+            // Safety: if the video fails to load or hangs,
+            // remove the loader after 6 seconds.
+            setTimeout(finishLoading, 6000);
+        }
 
-    loader.classList.add("hide");
-
-    document.body.classList.remove("loading");
-
-    setTimeout(()=>{
-        loader.remove();
-    },800);
+    });
 
 }
-
