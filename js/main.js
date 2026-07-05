@@ -100,9 +100,7 @@ if (loader && video) {
 
 
 // Initialize EmailJS
-emailjs.init({
-    publicKey: "fymXGA5Oa_267lIbQ"
-});
+emailjs.init("fymXGA5Oa_267lIbQ");
 
 // Get the form
 const form = document.getElementById("quote-form");
