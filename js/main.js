@@ -63,3 +63,19 @@ if (track) {
 
   animate();
 }
+const loader = document.getElementById("loader");
+const video = document.getElementById("loaderVideo");
+
+window.addEventListener("load", () => {
+
+    // If video already finished
+    if(video.ended){
+        loader.classList.add("hide");
+    }
+
+    // Otherwise wait until it ends
+    video.addEventListener("ended", () => {
+        loader.classList.add("hide");
+    });
+
+});
