@@ -129,9 +129,9 @@ if (form) {
             form.reset();
             grecaptcha.reset();
         })
-     .catch((err) => {
-    console.error("EmailJS Error:", err);
-    alert(JSON.stringify(err));});
+        .catch((err) => {
+            console.error("EmailJS Error:", err);
+            alert(JSON.stringify(err));
         });
     });
 }
