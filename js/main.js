@@ -129,9 +129,9 @@ if (form) {
             form.reset();
             grecaptcha.reset();
         })
-        .catch((err) => {
-            console.error(err);
-            alert("Failed to send inquiry.");
+     .catch((err) => {
+    console.error("EmailJS Error:", err);
+    alert(JSON.stringify(err));});
         });
     });
 }
