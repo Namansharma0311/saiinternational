@@ -91,7 +91,7 @@ if (loader && video) {
 
             // Safety: if the video fails to load or hangs,
             // remove the loader after 6 seconds.
-            setTimeout(finishLoading, 6000);
+            setTimeout(finishLoading, 8000);
         }
 
     });
