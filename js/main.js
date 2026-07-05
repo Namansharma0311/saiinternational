@@ -99,15 +99,24 @@ if (loader && video) {
 }
 
 
+// Initialize EmailJS
 emailjs.init({
     publicKey: "fymXGA5Oa_267lIbQ"
 });
 
+// Get the form
 const form = document.getElementById("quote-form");
 
 if (form) {
     form.addEventListener("submit", function (e) {
         e.preventDefault();
+
+        const captchaResponse = grecaptcha.getResponse();
+
+        if (!captchaResponse) {
+            alert("Please complete the reCAPTCHA.");
+            return;
+        }
 
         emailjs.send("service_skskdzd", "template_xuonzij", {
             name: document.getElementById("name").value,
@@ -120,6 +129,7 @@ if (form) {
         .then(() => {
             alert("Inquiry sent successfully!");
             form.reset();
+            grecaptcha.reset();
         })
         .catch((err) => {
             console.error(err);
